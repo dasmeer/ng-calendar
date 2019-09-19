@@ -1,0 +1,21 @@
+<!-- *ngIf='model' -->
+<div class="month">
+    <h1>{{model.title}}</h1>
+    <table>
+        <thead>
+            <th *ngFor='let label of model.daysLabels'>{{label}}</th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let week of model.days; let i = index; let lRow = last'>
+                <td *ngIf='i === 0 && model.firstDayOfWeek > 1' [colSpan]="model.firstDayOfWeek - 1"></td>
+                <td *ngFor='let day of model.days[i]; let lDay = last; let iDay = index' [ngClass]="{
+                    'right' : lDay && !lRow || lRow && iDay === 6, 
+                    'bottom' : lRow,
+                    'red' : iDay >= model.days[i].length-2 && !lRow || iDay > 4 && lRow || day.isHoliday,
+                    'orange' : day.isShort
+                    }" (click)='day.setType()'>{{day.num}}</td>
+                <td *ngIf='lRow && week.length < 7' [colSpan]="7 - week.length" class="right bottom"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

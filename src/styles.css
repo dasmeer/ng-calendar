@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+::selection {
+    background: transparent;
+}
+
+::-moz-selection {
+    background: transparent;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}

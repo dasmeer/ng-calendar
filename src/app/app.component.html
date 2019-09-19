@@ -1,0 +1,14 @@
+<div id="control-panel">
+    <select [ngModel]='selectedYear' (ngModelChange)='onYearChange($event)'>
+        <option *ngFor='let y of years'>{{y}}</option>
+    </select>
+    <br>
+    <div id="combo">
+        <input type="checkbox" id="cb-past" [(ngModel)]='disablingIsOn' />
+        <label for="cb-past">disable past days</label>
+    </div>
+</div>
+
+<div id="month-container">
+    <sa-month *ngFor='let m of model.getMonths()' [model]='m'></sa-month>
+</div>

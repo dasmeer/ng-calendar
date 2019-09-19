@@ -1,0 +1,24 @@
+
+
+#control-panel{
+    position: absolute;
+    margin-left: 1100px;
+    margin-top: 10px;
+}
+
+#control-panel textarea{
+    margin-top: 20px;
+    width: 300px;
+}
+
+#month-container{
+    width: 980px;
+}
+
+#cb-past{
+    vertical-align: middle;
+}
+
+#combo{
+    margin-top: 20px;
+}
