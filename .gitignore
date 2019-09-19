@@ -5,6 +5,7 @@
 /tmp
 
 /.git1
+/dist
 
 # dependencies
 /node_modules
