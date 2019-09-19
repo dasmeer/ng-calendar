@@ -3,6 +3,10 @@
         <option *ngFor='let y of years'>{{y}}</option>
     </select>
     <br>
+    <div id="current-day">
+        <input type="checkbox" id="cb-current-day" [(ngModel)]='currentDayIsOn' />
+        <label for="cb-current-day">highligh current day</label>
+    </div>
     <div id="combo">
         <input type="checkbox" id="cb-past" [(ngModel)]='disablingIsOn' />
         <label for="cb-past">disable past days</label>
