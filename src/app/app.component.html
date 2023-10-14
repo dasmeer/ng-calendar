@@ -4,6 +4,14 @@
     </select>
     <br />
     <br />
+    <select
+        [ngModel]="selectedCountry"
+        (ngModelChange)="onCountryChange($event)"
+    >
+        <option *ngFor="let c of country">{{ c }}</option>
+    </select>
+    <br />
+    <br />
     <div id="current-day">
         <input
             type="checkbox"

@@ -1,5 +1,5 @@
 #control-panel {
-    position: absolute;
+    position: fixed;
     margin-left: 1100px;
     margin-top: 10px;
 }

@@ -6,8 +6,12 @@ export class Model {
     private months: SaMonth[];
     // private locator = (m: SaMonth, i: number) => m.index == i;
 
-    constructor(year: number, ru: boolean, currentDayIsOn: boolean = false) {
-        this.dataSource = new MonthDataSource(year, ru, currentDayIsOn);
+    constructor(
+        year: number,
+        country: string,
+        currentDayIsOn: boolean = false
+    ) {
+        this.dataSource = new MonthDataSource(year, country, currentDayIsOn);
         this.months = new Array<SaMonth>();
         this.dataSource.getData().forEach((x) => this.months.push(x));
     }

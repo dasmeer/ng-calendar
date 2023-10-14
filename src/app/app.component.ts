@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Model } from "./repository.model";
 import { SaMonthComponent } from "./sa-month/sa-month.component";
+import { Constants } from "./constants";
 
 @Component({
     selector: "app-root",
@@ -10,11 +11,11 @@ import { SaMonthComponent } from "./sa-month/sa-month.component";
 export class AppComponent {
     model: Model;
     years: number[] = [];
+    country: string[] = ["", Constants.RUSSIA, Constants.MALTA];
+    selectedCountry: string = "";
     selectedYear: number;
     disablingIsOn = false;
     currentDayIsOn = false;
-    ru = true;
-    // holidays: string = '{"a":[{ "1": [ "1", "2", "3", "4", "5", "6", "7", "8" ]} , {"2": [ "23" ]}, {"3": [ "8" ]}, {"5": [ "1", "9" ]}, {"6": [ "12" ]}, {"11": [ "4" ] }]}';
 
     constructor() {
         let date = new Date();
@@ -24,15 +25,22 @@ export class AppComponent {
         }
 
         this.selectedYear = year;
-        this.model = new Model(year, this.ru, this.currentDayIsOn);
+        this.model = new Model(year, this.selectedCountry, this.currentDayIsOn);
     }
 
     onYearChange(value) {
         this.selectedYear = value;
-        this.model = new Model(value, this.ru, this.currentDayIsOn);
+        this.model = new Model(
+            value,
+            this.selectedCountry,
+            this.currentDayIsOn
+        );
     }
-
+    onCountryChange(value) {
+        this.selectedCountry = value;
+        this.model = new Model(this.selectedYear, value, this.currentDayIsOn);
+    }
     onCurrentDayChange(value) {
-        this.model = new Model(this.selectedYear, this.ru, value);
+        this.model = new Model(this.selectedYear, this.selectedCountry, value);
     }
 }
