@@ -1,18 +1,25 @@
 <div id="control-panel">
-    <select [ngModel]='selectedYear' (ngModelChange)='onYearChange($event)'>
-        <option *ngFor='let y of years'>{{y}}</option>
+    <select [ngModel]="selectedYear" (ngModelChange)="onYearChange($event)">
+        <option *ngFor="let y of years">{{ y }}</option>
     </select>
-    <br>
+    <br />
+    <br />
     <div id="current-day">
-        <input type="checkbox" id="cb-current-day" [(ngModel)]='currentDayIsOn' />
+        <input
+            type="checkbox"
+            id="cb-current-day"
+            [(ngModel)]="currentDayIsOn"
+            (ngModelChange)="onCurrentDayChange($event)"
+        />
         <label for="cb-current-day">highligh current day</label>
     </div>
     <div id="combo">
-        <input type="checkbox" id="cb-past" [(ngModel)]='disablingIsOn' />
+        <input type="checkbox" id="cb-past" [(ngModel)]="disablingIsOn" />
         <label for="cb-past">disable past days</label>
     </div>
+    <!-- <p>{{ currentDayIsOn }}</p> -->
 </div>
 
 <div id="month-container">
-    <sa-month *ngFor='let m of model.getMonths()' [model]='m'></sa-month>
+    <sa-month *ngFor="let m of model.getMonths()" [model]="m"></sa-month>
 </div>
