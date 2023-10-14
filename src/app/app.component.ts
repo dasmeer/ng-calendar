@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { Model } from "./repository.model";
-import { SaMonthComponent } from "./sa-month/sa-month.component";
 import { Constants } from "./constants";
 
 @Component({
