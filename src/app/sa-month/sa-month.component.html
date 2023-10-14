@@ -25,7 +25,8 @@
                             (iDay > 4 && lRow) ||
                             day.isHoliday,
                         orange: day.isShort,
-                        blue: day.isCurrent
+                        blue: day.isCurrent,
+                        grey: day.isDisabled
                     }"
                     (click)="day.setType()"
                 >

@@ -9,12 +9,14 @@ export class SaDay {
         num: number,
         isHoliday: boolean = false,
         isShort: boolean = false,
-        isCurrent: boolean = false
+        isCurrent: boolean = false,
+        isDisabled: boolean = false
     ) {
         this.num = num;
         this.isHoliday = isHoliday;
         this.isShort = isShort;
         this.isCurrent = isCurrent;
+        this.isDisabled = isDisabled;
     }
 
     setType = () => {

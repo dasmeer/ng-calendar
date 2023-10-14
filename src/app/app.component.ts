@@ -13,8 +13,8 @@ export class AppComponent {
     country: string[] = ["", Constants.RUSSIA, Constants.MALTA];
     selectedCountry: string = "";
     selectedYear: number;
-    disablingIsOn = false;
     currentDayIsOn = false;
+    disablingIsOn = false;
 
     constructor() {
         let date = new Date();
@@ -24,7 +24,12 @@ export class AppComponent {
         }
 
         this.selectedYear = year;
-        this.model = new Model(year, this.selectedCountry, this.currentDayIsOn);
+        this.model = new Model(
+            year,
+            this.selectedCountry,
+            this.currentDayIsOn,
+            this.disablingIsOn
+        );
     }
 
     onYearChange(value) {
@@ -32,14 +37,34 @@ export class AppComponent {
         this.model = new Model(
             value,
             this.selectedCountry,
-            this.currentDayIsOn
+            this.currentDayIsOn,
+            this.disablingIsOn
         );
     }
     onCountryChange(value) {
         this.selectedCountry = value;
-        this.model = new Model(this.selectedYear, value, this.currentDayIsOn);
+        this.model = new Model(
+            this.selectedYear,
+            value,
+            this.currentDayIsOn,
+            this.disablingIsOn
+        );
     }
     onCurrentDayChange(value) {
-        this.model = new Model(this.selectedYear, this.selectedCountry, value);
+        this.model = new Model(
+            this.selectedYear,
+            this.selectedCountry,
+            value,
+            this.disablingIsOn
+        );
+    }
+    onDisablingChange(value) {
+        this.disablingIsOn = value;
+        this.model = new Model(
+            this.selectedYear,
+            this.selectedCountry,
+            this.currentDayIsOn,
+            value
+        );
     }
 }

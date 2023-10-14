@@ -45,7 +45,8 @@ export class MonthDataSource {
     constructor(
         year: number,
         country: string,
-        currentDayIsOn: boolean = false
+        currentDayIsOn: boolean = false,
+        disablingIsOn: boolean = false
     ) {
         if (!year) year = new Date().getFullYear();
 
@@ -72,7 +73,8 @@ export class MonthDataSource {
                     i,
                     this.titles[i],
                     holidays[i + 1],
-                    currentDayIsOn
+                    currentDayIsOn,
+                    disablingIsOn
                 )
             );
             // console.log(year + '--' + i);

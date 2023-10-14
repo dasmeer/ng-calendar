@@ -9,9 +9,15 @@ export class Model {
     constructor(
         year: number,
         country: string,
-        currentDayIsOn: boolean = false
+        currentDayIsOn: boolean = false,
+        disablingIsOn: boolean = false
     ) {
-        this.dataSource = new MonthDataSource(year, country, currentDayIsOn);
+        this.dataSource = new MonthDataSource(
+            year,
+            country,
+            currentDayIsOn,
+            disablingIsOn
+        );
         this.months = new Array<SaMonth>();
         this.dataSource.getData().forEach((x) => this.months.push(x));
     }

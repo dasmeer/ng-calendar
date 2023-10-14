@@ -22,10 +22,15 @@
         <label for="cb-current-day">highligh current day</label>
     </div>
     <div id="combo">
-        <input type="checkbox" id="cb-past" [(ngModel)]="disablingIsOn" />
+        <input
+            type="checkbox"
+            id="cb-past"
+            [(ngModel)]="disablingIsOn"
+            (ngModelChange)="onDisablingChange($event)"
+        />
         <label for="cb-past">disable past days</label>
     </div>
-    <!-- <p>{{ currentDayIsOn }}</p> -->
+    <p>{{ disablingIsOn }}</p>
 </div>
 
 <div id="month-container">

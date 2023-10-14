@@ -16,7 +16,8 @@ export class SaMonth {
         index: number,
         title?: string,
         holidays?: string[],
-        currentDayIsOn: boolean = false
+        currentDayIsOn: boolean = false,
+        disablingIsOn: boolean = false
     ) {
         // console.log(index);
         this.index = index;
@@ -26,12 +27,7 @@ export class SaMonth {
         this.days = new Array(4);
         this.currentDayIsOn = currentDayIsOn;
 
-        // for (var d = 1; d <= this.lastDay; d++) {
-
         if (this.firstDayOfWeek === 0) this.firstDayOfWeek = 7;
-
-        // console.log(`i = ${index}, last = ${this.lastDay}, fdw = ${this.firstDayOfWeek}`);
-        //console.log(holidays);
 
         var firstFound = false;
         var d = 1;
@@ -40,23 +36,28 @@ export class SaMonth {
         for (var w = 0; w < 6; w++) {
             this.days[w] = [];
 
-            // if (d < this.lastDay)
             for (var j = 0; j < 7; j++) {
                 if (!firstFound) firstFound = j === this.firstDayOfWeek - 1;
 
                 if (firstFound) {
-                    // console.log(`w${w} d${j} = ${d}`);
                     let isCurrent =
                         currentDayIsOn &&
                         year === today.getFullYear() &&
                         index === today.getMonth() &&
                         d === today.getDate();
+                    let isDisabled = false;
+                    if (disablingIsOn) {
+                        let date = new Date(year, index, d);
+                        date.setDate(date.getDate() + 1);
+                        isDisabled = date < today;
+                    }
                     this.days[w].push(
                         new SaDay(
                             d,
                             holidays && holidays.indexOf(`${d}`) != -1,
                             false,
-                            isCurrent
+                            isCurrent,
+                            isDisabled
                         )
                     );
                     d++;
