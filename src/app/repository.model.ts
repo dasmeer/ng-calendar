@@ -4,7 +4,6 @@ import { MonthDataSource } from "./datasource.model";
 export class Model {
     private dataSource: MonthDataSource;
     private months: SaMonth[];
-    // private locator = (m: SaMonth, i: number) => m.index == i;
 
     constructor(
         year: number,
@@ -23,5 +22,4 @@ export class Model {
     }
 
     getMonths = () => this.months;
-    // getMonth = (i: number) => this.months.find(x => this.locator(x, i));
 }

@@ -8,7 +8,6 @@ export class SaMonth {
     daysLabels: string[] = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
     days: SaDay[][];
     currentDayIsOn: boolean;
-
     startWithMonday: boolean;
 
     constructor(
@@ -19,7 +18,6 @@ export class SaMonth {
         currentDayIsOn: boolean = false,
         disablingIsOn: boolean = false
     ) {
-        // console.log(index);
         this.index = index;
         this.lastDay = new Date(year, index + 1, 0).getDate();
         this.firstDayOfWeek = new Date(year, index, 1).getDay();
