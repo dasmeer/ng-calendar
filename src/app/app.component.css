@@ -1,7 +1,7 @@
 #control-panel {
-    position: fixed;
-    margin-left: 1100px;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-left: 15px;
+    float: left;
 }
 
 #control-panel textarea {
@@ -10,7 +10,13 @@
 }
 
 #month-container {
-    width: 980px;
+    float: left;
+}
+.portrait {
+    width: 970px;
+}
+.album {
+    width: 1285px;
 }
 
 #cb-past {
@@ -21,6 +27,14 @@
     margin-top: 20px;
 }
 
+.dropDown {
+    padding-bottom: 10px;
+}
+
+#current-day {
+    padding-top: 10px;
+}
+
 @media print {
     #control-panel {
         visibility: hidden;
@@ -28,8 +42,15 @@
     #month-container {
         visibility: visible;
         position: absolute;
+    }
+    .portrait {
         left: 8px;
         top: 100px;
         zoom: 122%;
+    }
+    .album {
+        left: 40px;
+        top: 10px;
+        zoom: 82%;
     }
 }

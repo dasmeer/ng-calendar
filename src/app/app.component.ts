@@ -10,9 +10,12 @@ import { Constants } from "./constants";
 export class AppComponent {
     model: Model;
     years: number[] = [];
-    country: string[] = ["", Constants.RUSSIA, Constants.MALTA];
+    countries = ["", Constants.RUSSIA, Constants.MALTA];
+    printStyles = [Constants.PORTRAIT, Constants.ALBUM];
     selectedCountry: string = "";
     selectedYear: number;
+    selectedPrintStyle = Constants.PORTRAIT;
+    selectedPrintIsPortrait = true;
     currentDayIsOn = false;
     disablingIsOn = false;
 
@@ -43,6 +46,16 @@ export class AppComponent {
     }
     onCountryChange(value) {
         this.selectedCountry = value;
+        this.model = new Model(
+            this.selectedYear,
+            value,
+            this.currentDayIsOn,
+            this.disablingIsOn
+        );
+    }
+    onPrintStyleChange(value) {
+        this.selectedPrintStyle = value;
+        this.selectedPrintIsPortrait = value === Constants.PORTRAIT;
         this.model = new Model(
             this.selectedYear,
             value,

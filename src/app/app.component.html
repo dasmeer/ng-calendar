@@ -1,17 +1,32 @@
+<div
+    id="month-container"
+    [ngClass]="selectedPrintIsPortrait ? 'portrait' : 'album'"
+>
+    <sa-month *ngFor="let m of model.getMonths()" [model]="m"></sa-month>
+</div>
+
 <div id="control-panel">
-    <select [ngModel]="selectedYear" (ngModelChange)="onYearChange($event)">
-        <option *ngFor="let y of years">{{ y }}</option>
-    </select>
-    <br />
-    <br />
-    <select
-        [ngModel]="selectedCountry"
-        (ngModelChange)="onCountryChange($event)"
-    >
-        <option *ngFor="let c of country">{{ c }}</option>
-    </select>
-    <br />
-    <br />
+    <div class="dropDown">
+        <select [ngModel]="selectedYear" (ngModelChange)="onYearChange($event)">
+            <option *ngFor="let y of years">{{ y }}</option>
+        </select>
+    </div>
+    <div class="dropDown">
+        <select
+            [ngModel]="selectedCountry"
+            (ngModelChange)="onCountryChange($event)"
+        >
+            <option *ngFor="let c of countries">{{ c }}</option>
+        </select>
+    </div>
+    <div class="dropDown">
+        <select
+            [ngModel]="selectedPrintStyle"
+            (ngModelChange)="onPrintStyleChange($event)"
+        >
+            <option *ngFor="let p of printStyles">{{ p }}</option>
+        </select>
+    </div>
     <div id="current-day">
         <input
             type="checkbox"
@@ -30,8 +45,4 @@
         />
         <label for="cb-past">disable past days</label>
     </div>
-</div>
-
-<div id="month-container">
-    <sa-month *ngFor="let m of model.getMonths()" [model]="m"></sa-month>
 </div>
