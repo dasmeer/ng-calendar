@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Model } from "./repository.model";
 import { Constants } from "./constants";
+import { CookieService } from "./CookieSevice";
 
 @Component({
     selector: "app-root",
@@ -18,6 +19,20 @@ export class AppComponent {
     selectedPrintIsPortrait = true;
     currentDayIsOn = false;
     disablingIsOn = false;
+
+    ngOnInit() {
+        let selectedPrintStyle = this.getSelectedPrintStyle();
+        if (!selectedPrintStyle) this.setSelectedPrintStyle();
+
+        this.selectedPrintStyle = selectedPrintStyle
+            ? selectedPrintStyle
+            : Constants.PORTRAIT;
+
+        this.updateSelectedPrintStyle();
+
+        let selectedCountry = this.getSelectedCountry();
+        if (selectedCountry) this.onCountryChange(selectedCountry);
+    }
 
     constructor() {
         let date = new Date();
@@ -52,16 +67,11 @@ export class AppComponent {
             this.currentDayIsOn,
             this.disablingIsOn
         );
+        this.setSelectedCountry();
     }
     onPrintStyleChange(value) {
         this.selectedPrintStyle = value;
-        this.selectedPrintIsPortrait = value === Constants.PORTRAIT;
-        this.model = new Model(
-            this.selectedYear,
-            value,
-            this.currentDayIsOn,
-            this.disablingIsOn
-        );
+        this.setSelectedPrintStyle();
     }
     onCurrentDayChange(value) {
         this.model = new Model(
@@ -80,4 +90,20 @@ export class AppComponent {
             value
         );
     }
+
+    setSelectedPrintStyle() {
+        CookieService.setCookie("selectedPrintStyle", this.selectedPrintStyle);
+        this.updateSelectedPrintStyle();
+    }
+    getSelectedPrintStyle() {
+        return CookieService.getCookie("selectedPrintStyle");
+    }
+    updateSelectedPrintStyle() {
+        this.selectedPrintIsPortrait =
+            this.selectedPrintStyle === Constants.PORTRAIT;
+    }
+    setSelectedCountry = () =>
+        CookieService.setCookie("selectedCountry", this.selectedCountry);
+
+    getSelectedCountry = () => CookieService.getCookie("selectedCountry");
 }
