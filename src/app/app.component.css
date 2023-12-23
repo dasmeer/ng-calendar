@@ -50,7 +50,7 @@
     }
     .album {
         left: 40px;
-        top: 10px;
         zoom: 82%;
+        bottom: 5px;
     }
 }
