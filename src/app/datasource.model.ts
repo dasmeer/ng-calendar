@@ -1,7 +1,5 @@
 import { Constants } from "./constants";
 import { SaMonth } from "./sa-month/sa-month.model";
-// import { Observable } from 'rxjs';
-// import { Observable } from 'rxjs/Observable';
 
 export class MonthDataSource {
     private data: SaMonth[];
@@ -46,7 +44,7 @@ export class MonthDataSource {
         year: number,
         country: string,
         currentDayIsOn: boolean = false,
-        disablingIsOn: boolean = false
+        disablingIsOn: boolean = false,
     ) {
         if (!year) year = new Date().getFullYear();
 
@@ -74,15 +72,12 @@ export class MonthDataSource {
                     this.titles[i],
                     holidays[i + 1],
                     currentDayIsOn,
-                    disablingIsOn
-                )
+                    disablingIsOn,
+                ),
             );
             // console.log(year + '--' + i);
         }
     }
 
     getData = () => this.data;
-    // getData() {
-    //     return Observable.from(this.data);
-    // }
 }
